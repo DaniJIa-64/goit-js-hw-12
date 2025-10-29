@@ -13,6 +13,7 @@ import {
 const form = document.querySelector('.form');
 const input = document.querySelector('input[name="search-text"]');
 form.addEventListener('submit', formSearch);
+hideLoader();
 
 function formSearch(event) {
   event.preventDefault();

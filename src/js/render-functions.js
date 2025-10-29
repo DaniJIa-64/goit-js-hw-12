@@ -2,7 +2,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryList = document.querySelector('.gallery');
-const loader = document.querySelector('span');
+const loader = document.querySelector('.loader');
 
 export function createGallery(images) {
   galleryList.innerHTML = images
