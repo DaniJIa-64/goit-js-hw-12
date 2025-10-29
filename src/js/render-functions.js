@@ -4,6 +4,13 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const galleryList = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
+let gallery = new SimpleLightbox('.image-pixabay a', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+  overlayOpacity: 1.0,
+});
+
 export function createGallery(images) {
   galleryList.innerHTML = images
     .map(
@@ -27,12 +34,6 @@ export function createGallery(images) {
         </li>`
     )
     .join('');
-  let gallery = new SimpleLightbox('.image-pixabay a', {
-    captions: true,
-    captionsData: 'alt',
-    captionDelay: 250,
-    overlayOpacity: 1.0,
-  });
   gallery.refresh();
 }
 
@@ -40,10 +41,10 @@ export function clearGallery() {
   galleryList.innerHTML = '';
 }
 
-export function showLoader() {
-  loader.classList.add('loader');
+export function hideLoader() {
+  loader.classList.add('hidden');
 }
 
-export function hideLoader() {
-  loader.classList.remove('loader');
+export function showLoader() {
+  loader.classList.remove('hidden');
 }

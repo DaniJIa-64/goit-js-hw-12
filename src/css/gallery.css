@@ -117,4 +117,8 @@ input[name='search-text']:hover {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 /*  */

@@ -13,7 +13,6 @@ import {
 const form = document.querySelector('.form');
 const input = document.querySelector('input[name="search-text"]');
 form.addEventListener('submit', formSearch);
-hideLoader();
 
 function formSearch(event) {
   event.preventDefault();
@@ -27,7 +26,7 @@ function formSearch(event) {
   }
   showLoader();
   getImagesByQuery(input.value.trim())
-    .then(({ data }) => {
+    .then(data => {
       if (!data.hits.length) {
         iziToast.error({
           position: 'topRight',
