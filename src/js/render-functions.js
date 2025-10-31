@@ -3,6 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryList = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+const btnLoad = document.querySelector('.btn-load-more');
 
 let gallery = new SimpleLightbox('.image-pixabay a', {
   captions: true,
@@ -12,7 +13,7 @@ let gallery = new SimpleLightbox('.image-pixabay a', {
 });
 
 export function createGallery(images) {
-  galleryList.innerHTML = images
+  const markup = images
     .map(
       ({
         webformatURL,
@@ -24,7 +25,7 @@ export function createGallery(images) {
         downloads,
       }) =>
         `<li class="image-pixabay">
-            <a href=${largeImageURL}><img src="${webformatURL}" alt="${tags}" width='360' class="image-icon"/></a>
+            <a href=${largeImageURL}><img src="${webformatURL}" alt="${tags}" class="image-icon"/></a>
             <ul class="image-descriptions">
               <li class="image-text">Likes <br><span>${likes}</span></li>
               <li class="image-text">Views <br><span>${views}</span></li>
@@ -34,6 +35,7 @@ export function createGallery(images) {
         </li>`
     )
     .join('');
+  galleryList.insertAdjacentHTML('beforeend', markup);
   gallery.refresh();
 }
 
@@ -41,10 +43,18 @@ export function clearGallery() {
   galleryList.innerHTML = '';
 }
 
+export function showLoader() {
+  loader.classList.remove('hidden');
+}
+
 export function hideLoader() {
   loader.classList.add('hidden');
 }
 
-export function showLoader() {
-  loader.classList.remove('hidden');
+export function showLoadMoreButton() {
+  btnLoad.classList.remove('load-more-hidden');
+}
+
+export function hideLoadMoreButton() {
+  btnLoad.classList.add('load-more-hidden');
 }
